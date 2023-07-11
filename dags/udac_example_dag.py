@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import os
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
+from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators import (StageToRedshiftOperator, LoadFactOperator,
                                LoadDimensionOperator, DataQualityOperator)
 from helpers import SqlQueries
@@ -103,7 +104,6 @@ default_args = {
     # "retries": 3,
     "retries": 1,
     # "retry_delay": timedelta(minutes=5),
-    "retry_delay": timedelta(minutes=1),
     "catchup": False,
     "email_on_retry": False
 }
