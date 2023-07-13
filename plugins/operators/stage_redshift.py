@@ -12,7 +12,8 @@ class StageToRedshiftOperator(BaseOperator):
         ACCESS_KEY_ID '{}'
         SECRET_ACCESS_KEY '{}'
         IGNOREHEADER {}
-        DELIMITER '{}'
+        FORMAT JSON '{}' 
+        TRUNCATECOLUMNS BLANKSASNULL EMPTYASNULL
     """
     ui_color = '#358140'
 
@@ -21,14 +22,14 @@ class StageToRedshiftOperator(BaseOperator):
                  # Define your operators params (with defaults) here
                  # Example:
                  # redshift_conn_id=your-connection-name
-                 redshift_conn_id="",
-                 aws_credentials_id="",
+                 redshift_conn_id="redshift",
+                 aws_credentials_id="aws_credentials",
                  table="",
                  s3_bucket="",
                  s3_key="",
-                 delimiter=",",
                  ignore_headers=1,
-                 region="",
+                 region="us-west-2",
+                 json_format="auto",
                  *args, **kwargs):
 
         super(StageToRedshiftOperator, self).__init__(*args, **kwargs)
@@ -40,9 +41,9 @@ class StageToRedshiftOperator(BaseOperator):
         self.table = table
         self.s3_bucket = s3_bucket
         self.s3_key = s3_key
-        self.delimiter = delimiter
         self.ignore_headers = ignore_headers
         self.region = region
+        self.json_format = json_format
 
     def execute(self, context):
         aws_hook = AwsHook(self.aws_credentials_id)
@@ -61,6 +62,6 @@ class StageToRedshiftOperator(BaseOperator):
             credentials.access_key,
             credentials.secret_key,
             self.ignore_headers,
-            self.delimiter
+            self.json_format
         )
         redshift.run(formatted_sql)
