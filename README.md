@@ -10,8 +10,6 @@ It is expected that high grade data pipelines are created, and they are dynamic 
 
 The source data resides in S3 and needs to be processed in Sparkify's data warehouse in Amazon Redshift. The source datasets consist of JSON logs that tell about user activity in the application and JSON metadata about the songs the users listen to.
 
-## Logical Data Model for the project
-tba
 
 ## Overview of the files in the repository
 - create_tables.sql file contains SQL queries to create table in Redshift cluster
