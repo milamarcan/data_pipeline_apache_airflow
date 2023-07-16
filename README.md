@@ -21,7 +21,7 @@ The source data resides in S3 and needs to be processed in Sparkify's data wareh
 
 ## Pre-requisites
 - In your AWS account:
-    - prepare S3 bucket with the dataset (you can use this[http://millionsongdataset.com/] dataset or it's subset)
+    - prepare S3 bucket with the dataset (you can use [this](http://millionsongdataset.com/) dataset or it's subset)
     - prepare Redshift cluster for the output (note that it should be in the same region as S3 bucket)
     - prepare an IAM User in AWS that can communicate with both S3 bucket (read permissions) and Redshift cluster (full permissions)
     - install Apache Airflow and add your User and Cluster details as Connections
