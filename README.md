@@ -1,5 +1,6 @@
 # Data Pipeline with Apache Airflow
 
+
 ## Project overview
 This repository is aimed to load JSON files from AWS S3 bucket to AWS Redshift cluster using Apache Airflow with the main emphasis on creating custom Airflow operators.
 
