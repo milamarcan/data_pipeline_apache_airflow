@@ -13,6 +13,9 @@ It is expected that high grade data pipelines are created, and they are dynamic 
 
 The source data resides in S3 and needs to be processed in Sparkify's data warehouse in Amazon Redshift. The source datasets consist of JSON logs that tell about user activity in the application and JSON metadata about the songs the users listen to.
 
+## Architecture of the project
+![High-level overview of the project](/img/architecture.jpg)
+
 
 ## Overview of the files in the repository
 
